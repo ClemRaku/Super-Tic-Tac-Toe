@@ -17,6 +17,7 @@ namespace Supertictactoe_Trial_1
 
         Button lastPlayerButton;
         Button lastCPUButton;
+        Button lastMovedButton;
 
         bool CPUhasMOVED;
         bool topleft, topright, topmid, midleft, midmid, midright, botleft, botmid, botright;
@@ -127,6 +128,7 @@ namespace Supertictactoe_Trial_1
             }
             InitialButtonGroups();
             lastCPUButton = null;
+            lastMovedButton = null;
             foreach(var x in buttonGroups)
             {
                 foreach(Button y in x)
@@ -331,7 +333,7 @@ namespace Supertictactoe_Trial_1
             }
 
             //for o in small tic tac toe
-            else if (!highlighted11 && (
+            if (!highlighted11 && (
                 button1.Text == "O" && button5.Text == "O" && button9.Text == "O" ||
                 button3.Text == "O" && button5.Text == "O" && button7.Text == "O" ||
                 button1.Text == "O" && button2.Text == "O" && button3.Text == "O" ||
@@ -351,7 +353,7 @@ namespace Supertictactoe_Trial_1
                 buttonGroup11.Clear();
                 highlighted11 = true;
             }
-            else if (!highlighted12 && (
+            if (!highlighted12 && (
                 button10.Text == "O" && button11.Text == "O" && button13.Text == "O" ||
                 button12.Text == "O" && button15.Text == "O" && button16.Text == "O" ||
                 button14.Text == "O" && button17.Text == "O" && button18.Text == "O" ||
@@ -372,7 +374,7 @@ namespace Supertictactoe_Trial_1
                 buttonGroup12.Clear();
 
             }
-            else if (!highlighted13 && (
+            if (!highlighted13 && (
                 button19.Text == "O" && button20.Text == "O" && button22.Text == "O" ||
                 button21.Text == "O" && button24.Text == "O" && button25.Text == "O" ||
                 button23.Text == "O" && button26.Text == "O" && button27.Text == "O" ||
@@ -393,7 +395,7 @@ namespace Supertictactoe_Trial_1
 
 
             }
-            else if (!highlighted21 && (
+            if (!highlighted21 && (
                 button28.Text == "O" && button29.Text == "O" && button34.Text == "O" ||
                 button31.Text == "O" && button43.Text == "O" && button46.Text == "O" ||
                 button40.Text == "O" && button49.Text == "O" && button52.Text == "O" ||
@@ -413,7 +415,7 @@ namespace Supertictactoe_Trial_1
                 highlighted21 = true;
 
             }
-            else if (!highlighted22 && (
+            if (!highlighted22 && (
                 button30.Text == "O" && button33.Text == "O" && button37.Text == "O" ||
                 button36.Text == "O" && button44.Text == "O" && button47.Text == "O" ||
                 button41.Text == "O" && button50.Text == "O" && button53.Text == "O" ||
@@ -434,7 +436,7 @@ namespace Supertictactoe_Trial_1
                 highlighted22 = true;
 
             }
-            else if (
+            if (
                 !highlighted23 && (
                 button32.Text == "O" && button35.Text == "O" && button39.Text == "O" ||
                 button38.Text == "O" && button45.Text == "O" && button48.Text == "O" ||
@@ -456,7 +458,7 @@ namespace Supertictactoe_Trial_1
                 highlighted23 = true ;
 
             }
-            else if (
+            if (
                 !highlighted31 && (
                 button55.Text == "O" && button56.Text == "O" && button61.Text == "O" ||
                 button58.Text == "O" && button70.Text == "O" && button73.Text == "O" ||
@@ -478,7 +480,7 @@ namespace Supertictactoe_Trial_1
                 buttonGroup31.Clear();
 
             }
-            else if (
+            if (
                 !highlighted32 && (
                 button57.Text == "O" && button60.Text == "O" && button64.Text == "O" ||
                 button63.Text == "O" && button71.Text == "O" && button74.Text == "O" ||
@@ -500,7 +502,7 @@ namespace Supertictactoe_Trial_1
                 buttonGroup32.Clear();
 
             }
-            else if (
+            if (
                 !highlighted33 && (
                 button59.Text == "O" && button62.Text == "O" && button66.Text == "O" ||
                 button65.Text == "O" && button72.Text == "O" && button75.Text == "O" ||
@@ -525,38 +527,197 @@ namespace Supertictactoe_Trial_1
 
 
 
-            //EndGameChecks
-            if (button5.BackColor == Color.Red && button15.BackColor == Color.Red && button24.BackColor == Color.Red ||
-                button43.BackColor == Color.Red && button44.BackColor == Color.Red && button45.BackColor == Color.Red ||
-                button70.BackColor == Color.Red && button71.BackColor == Color.Red && button72.BackColor == Color.Red ||
-                button5.BackColor == Color.Red && button43.BackColor == Color.Red && button70.BackColor == Color.Red ||
-                button15.BackColor == Color.Red && button44.BackColor == Color.Red && button71.BackColor == Color.Red ||
-                button24.BackColor == Color.Red && button45.BackColor == Color.Red && button72.BackColor == Color.Red ||
-                button5.BackColor == Color.Red && button44.BackColor == Color.Red && button72.BackColor == Color.Red ||
-                button24.BackColor == Color.Red && button44.BackColor == Color.Red && button70.BackColor == Color.Red
-                )
+            //EndGameChecks - using highlighted flags and button colors for accurate detection
+            // Row 1 wins
+            if (highlighted11 && highlighted12 && highlighted13 && 
+                button5.BackColor == button15.BackColor && button15.BackColor == button24.BackColor &&
+                button5.BackColor == Color.Red)
             {
                 CPUtimer.Stop();
                 MessageBox.Show("CPU Wins", "Titans Says");
                 CPUWinCount++;
                 textBox1.Text = $"CPU Wins: {CPUWinCount}";
                 RestartGame();
+                return;
             }
-            else if (button5.BackColor == Color.Cyan && button15.BackColor == Color.Cyan && button24.BackColor == Color.Cyan ||
-                    button43.BackColor == Color.Cyan && button44.BackColor == Color.Cyan && button45.BackColor == Color.Cyan ||
-                    button70.BackColor == Color.Cyan && button71.BackColor == Color.Cyan && button72.BackColor == Color.Cyan ||
-                    button5.BackColor == Color.Cyan && button43.BackColor == Color.Cyan && button70.BackColor == Color.Cyan ||
-                    button15.BackColor == Color.Cyan && button44.BackColor == Color.Cyan && button71.BackColor == Color.Cyan ||
-                    button24.BackColor == Color.Cyan && button45.BackColor == Color.Cyan && button72.BackColor == Color.Cyan ||
-                    button5.BackColor == Color.Cyan && button44.BackColor == Color.Cyan && button72.BackColor == Color.Cyan ||
-                    button24.BackColor == Color.Cyan && button44.BackColor == Color.Cyan && button70.BackColor == Color.Cyan)
-
+            else if (highlighted11 && highlighted12 && highlighted13 && 
+                     button5.BackColor == button15.BackColor && button15.BackColor == button24.BackColor &&
+                     button5.BackColor == Color.Cyan)
             {
                 CPUtimer.Stop();
                 MessageBox.Show("Player Wins ", "Titans Says");
                 playerWinCount++;
                 textBox2.Text = $"Player Wins: {playerWinCount}";
                 RestartGame();
+                return;
+            }
+            
+            // Row 2 wins
+            if (highlighted21 && highlighted22 && highlighted23 &&
+                button43.BackColor == button44.BackColor && button44.BackColor == button45.BackColor &&
+                button43.BackColor == Color.Red)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("CPU Wins", "Titans Says");
+                CPUWinCount++;
+                textBox1.Text = $"CPU Wins: {CPUWinCount}";
+                RestartGame();
+                return;
+            }
+            else if (highlighted21 && highlighted22 && highlighted23 &&
+                     button43.BackColor == button44.BackColor && button44.BackColor == button45.BackColor &&
+                     button43.BackColor == Color.Cyan)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("Player Wins ", "Titans Says");
+                playerWinCount++;
+                textBox2.Text = $"Player Wins: {playerWinCount}";
+                RestartGame();
+                return;
+            }
+            
+            // Row 3 wins
+            if (highlighted31 && highlighted32 && highlighted33 &&
+                button70.BackColor == button71.BackColor && button71.BackColor == button72.BackColor &&
+                button70.BackColor == Color.Red)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("CPU Wins", "Titans Says");
+                CPUWinCount++;
+                textBox1.Text = $"CPU Wins: {CPUWinCount}";
+                RestartGame();
+                return;
+            }
+            else if (highlighted31 && highlighted32 && highlighted33 &&
+                     button70.BackColor == button71.BackColor && button71.BackColor == button72.BackColor &&
+                     button70.BackColor == Color.Cyan)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("Player Wins ", "Titans Says");
+                playerWinCount++;
+                textBox2.Text = $"Player Wins: {playerWinCount}";
+                RestartGame();
+                return;
+            }
+            
+            // Column 1 wins
+            if (highlighted11 && highlighted21 && highlighted31 &&
+                button5.BackColor == button43.BackColor && button43.BackColor == button70.BackColor &&
+                button5.BackColor == Color.Red)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("CPU Wins", "Titans Says");
+                CPUWinCount++;
+                textBox1.Text = $"CPU Wins: {CPUWinCount}";
+                RestartGame();
+                return;
+            }
+            else if (highlighted11 && highlighted21 && highlighted31 &&
+                     button5.BackColor == button43.BackColor && button43.BackColor == button70.BackColor &&
+                     button5.BackColor == Color.Cyan)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("Player Wins ", "Titans Says");
+                playerWinCount++;
+                textBox2.Text = $"Player Wins: {playerWinCount}";
+                RestartGame();
+                return;
+            }
+            
+            // Column 2 wins
+            if (highlighted12 && highlighted22 && highlighted32 &&
+                button15.BackColor == button44.BackColor && button44.BackColor == button71.BackColor &&
+                button15.BackColor == Color.Red)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("CPU Wins", "Titans Says");
+                CPUWinCount++;
+                textBox1.Text = $"CPU Wins: {CPUWinCount}";
+                RestartGame();
+                return;
+            }
+            else if (highlighted12 && highlighted22 && highlighted32 &&
+                     button15.BackColor == button44.BackColor && button44.BackColor == button71.BackColor &&
+                     button15.BackColor == Color.Cyan)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("Player Wins ", "Titans Says");
+                playerWinCount++;
+                textBox2.Text = $"Player Wins: {playerWinCount}";
+                RestartGame();
+                return;
+            }
+            
+            // Column 3 wins
+            if (highlighted13 && highlighted23 && highlighted33 &&
+                button24.BackColor == button45.BackColor && button45.BackColor == button72.BackColor &&
+                button24.BackColor == Color.Red)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("CPU Wins", "Titans Says");
+                CPUWinCount++;
+                textBox1.Text = $"CPU Wins: {CPUWinCount}";
+                RestartGame();
+                return;
+            }
+            else if (highlighted13 && highlighted23 && highlighted33 &&
+                     button24.BackColor == button45.BackColor && button45.BackColor == button72.BackColor &&
+                     button24.BackColor == Color.Cyan)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("Player Wins ", "Titans Says");
+                playerWinCount++;
+                textBox2.Text = $"Player Wins: {playerWinCount}";
+                RestartGame();
+                return;
+            }
+            
+            // Diagonal wins (top-left to bottom-right)
+            if (highlighted11 && highlighted22 && highlighted33 &&
+                button5.BackColor == button44.BackColor && button44.BackColor == button72.BackColor &&
+                button5.BackColor == Color.Red)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("CPU Wins", "Titans Says");
+                CPUWinCount++;
+                textBox1.Text = $"CPU Wins: {CPUWinCount}";
+                RestartGame();
+                return;
+            }
+            else if (highlighted11 && highlighted22 && highlighted33 &&
+                     button5.BackColor == button44.BackColor && button44.BackColor == button72.BackColor &&
+                     button5.BackColor == Color.Cyan)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("Player Wins ", "Titans Says");
+                playerWinCount++;
+                textBox2.Text = $"Player Wins: {playerWinCount}";
+                RestartGame();
+                return;
+            }
+            
+            // Diagonal wins (top-right to bottom-left)
+            if (highlighted13 && highlighted22 && highlighted31 &&
+                button24.BackColor == button44.BackColor && button44.BackColor == button70.BackColor &&
+                button24.BackColor == Color.Red)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("CPU Wins", "Titans Says");
+                CPUWinCount++;
+                textBox1.Text = $"CPU Wins: {CPUWinCount}";
+                RestartGame();
+                return;
+            }
+            else if (highlighted13 && highlighted22 && highlighted31 &&
+                     button24.BackColor == button44.BackColor && button44.BackColor == button70.BackColor &&
+                     button24.BackColor == Color.Cyan)
+            {
+                CPUtimer.Stop();
+                MessageBox.Show("Player Wins ", "Titans Says");
+                playerWinCount++;
+                textBox2.Text = $"Player Wins: {playerWinCount}";
+                RestartGame();
+                return;
             }
         }
 
@@ -615,12 +776,28 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+                    
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup11.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -637,7 +814,15 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+                    
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
                     foreach (var a in buttonGroups)
                     {
                         if (a.Contains(randomButton))
@@ -650,6 +835,13 @@ namespace Supertictactoe_Trial_1
                     CPUhasMOVED = true;
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
             }
@@ -665,12 +857,28 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup12.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -687,7 +895,16 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     foreach (var a in buttonGroups)
                     {
                         if (a.Contains(randomButton))
@@ -700,6 +917,13 @@ namespace Supertictactoe_Trial_1
                     CPUhasMOVED = true;
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
             }
@@ -709,18 +933,34 @@ namespace Supertictactoe_Trial_1
             {
                 topright = true;
 
-                if (buttonGroup13.Count > 0)
+                if (buttonGroup13.Count > 0 && !highlighted13)
                 {
                     Button randomButton = buttonGroup13[random.Next(buttonGroup13.Count)];
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup13.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -737,7 +977,16 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     foreach (var a in buttonGroups)
                     {
                         if (a.Contains(randomButton))
@@ -750,6 +999,13 @@ namespace Supertictactoe_Trial_1
                     CPUhasMOVED = true;
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
 
@@ -761,18 +1017,34 @@ namespace Supertictactoe_Trial_1
             {
                 midleft = true;
 
-                if (buttonGroup21.Count > 0)
+                if (buttonGroup21.Count > 0 && !highlighted21)
                 {
                     Button randomButton = buttonGroup21[random.Next(buttonGroup21.Count)];
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup21.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -789,7 +1061,16 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     foreach (var a in buttonGroups)
@@ -802,6 +1083,13 @@ namespace Supertictactoe_Trial_1
                     }
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
             }
@@ -810,18 +1098,34 @@ namespace Supertictactoe_Trial_1
                 lastPlayerButton == button70 || lastPlayerButton == button71 || lastPlayerButton == button72)
             {
                 midmid = true;
-                if (buttonGroup22.Count > 0)
+                if (buttonGroup22.Count > 0 && !highlighted22)
                 {
                     Button randomButton = buttonGroup22[random.Next(buttonGroup22.Count)];
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup22.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -838,7 +1142,7 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     foreach (var a in buttonGroups)
@@ -851,6 +1155,13 @@ namespace Supertictactoe_Trial_1
                     }
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
             }
@@ -860,18 +1171,34 @@ namespace Supertictactoe_Trial_1
             {
                 midright = true;
 
-                if (buttonGroup23.Count > 0)
+                if (buttonGroup23.Count > 0 && !highlighted23)
                 {
                     Button randomButton = buttonGroup23[random.Next(buttonGroup23.Count)];
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup23.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -888,7 +1215,7 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     foreach (var a in buttonGroups)
@@ -901,6 +1228,13 @@ namespace Supertictactoe_Trial_1
                     }
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
             }
@@ -910,18 +1244,34 @@ namespace Supertictactoe_Trial_1
             {
                 botleft = true;
 
-                if (buttonGroup31.Count > 0)
+                if (buttonGroup31.Count > 0 && !highlighted31)
                 {
                     Button randomButton = buttonGroup31[random.Next(buttonGroup31.Count)];
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup31.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -938,7 +1288,7 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     foreach (var a in buttonGroups)
@@ -951,6 +1301,13 @@ namespace Supertictactoe_Trial_1
                     }
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
             }
@@ -960,18 +1317,34 @@ namespace Supertictactoe_Trial_1
             {
                 botmid = true;
 
-                if (buttonGroup32.Count > 0)
+                if (buttonGroup32.Count > 0 && !highlighted32)
                 {
                     Button randomButton = buttonGroup32[random.Next(buttonGroup32.Count)];
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup32.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -988,7 +1361,16 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     foreach (var a in buttonGroups)
@@ -1001,6 +1383,13 @@ namespace Supertictactoe_Trial_1
                     }
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
             }
@@ -1010,18 +1399,34 @@ namespace Supertictactoe_Trial_1
             {
                 botright = true;
 
-                if (buttonGroup33.Count > 0)
+                if (buttonGroup33.Count > 0 && !highlighted33)
                 {
                     Button randomButton = buttonGroup33[random.Next(buttonGroup33.Count)];
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     buttonGroup33.Remove(randomButton);
                     buttons.Remove(randomButton);
                     CheckGame();
+
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+
                     CPUtimer.Stop();
                 }
                 else if (totalButtonCount > 0)
@@ -1038,7 +1443,16 @@ namespace Supertictactoe_Trial_1
                     randomButton.Enabled = false;
                     currentPlayer = Player.O;
                     randomButton.Text = currentPlayer.ToString();
-                    randomButton.BackColor = Color.IndianRed;
+
+                    // Reset previous last moved button to normal win color
+                    if (lastMovedButton != null)
+                    {
+                        lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+                    }
+
+                    randomButton.BackColor = Color.FromArgb(205, 0, 0); // Darker Red for O
+                    lastMovedButton = randomButton;
+
                     lastCPUButton = randomButton;
                     CPUhasMOVED = true;
                     foreach (var a in buttonGroups)
@@ -1051,6 +1465,13 @@ namespace Supertictactoe_Trial_1
                     }
                     buttons.Remove(randomButton);
                     CheckGame();
+                    
+                    // Restore last moved button's darker color after CheckGame may have overwritten it
+                    if (lastMovedButton != null && lastMovedButton.Text == "O")
+                    {
+                        lastMovedButton.BackColor = Color.FromArgb(205, 0, 0);
+                    }
+                    
                     CPUtimer.Stop();
                 }
             }
@@ -1099,7 +1520,16 @@ namespace Supertictactoe_Trial_1
 
             button.Text = currentPlayer.ToString();
             button.Enabled = false;
-            button.BackColor = Color.LightCyan;
+
+            // Reset previous last moved button to normal win color
+            if (lastMovedButton != null)
+            {
+                lastMovedButton.BackColor = lastMovedButton.Text == "X" ? Color.Cyan : Color.Red;
+            }
+
+            button.BackColor = Color.FromArgb(0, 191, 255); // Darker DeepSkyBlue for X
+            lastMovedButton = button;
+            
             buttons.Remove(button);
             foreach (var a in buttonGroups)
             {
@@ -1110,23 +1540,30 @@ namespace Supertictactoe_Trial_1
                 }
             }
             CheckGame();
+            
+            // Restore last moved button's darker color after CheckGame may have overwritten it
+            if (lastMovedButton != null && lastMovedButton.Text == "X")
+            {
+                lastMovedButton.BackColor = Color.FromArgb(0, 191, 255);
+            }
+            
             CPUtimer.Start();
             lastPlayerButton = button;
         }
 
         private List<Button> GetTargetGrid(Button lastMove)
         {
-            if (buttonGroup11.Contains(lastMove)) return buttonGroup11;
-            if (buttonGroup12.Contains(lastMove)) return buttonGroup12;
-            if (buttonGroup13.Contains(lastMove)) return buttonGroup13;
-            if (buttonGroup21.Contains(lastMove)) return buttonGroup21;
-            if (buttonGroup22.Contains(lastMove)) return buttonGroup22;
-            if (buttonGroup23.Contains(lastMove)) return buttonGroup23;
-            if (buttonGroup31.Contains(lastMove)) return buttonGroup31;
-            if (buttonGroup32.Contains(lastMove)) return buttonGroup32;
-            if (buttonGroup33.Contains(lastMove)) return buttonGroup33;
+            if (buttonPermaGroup11.Contains(lastMove)) return buttonGroup11;
+            if (buttonPermaGroup12.Contains(lastMove)) return buttonGroup12;
+            if (buttonPermaGroup13.Contains(lastMove)) return buttonGroup13;
+            if (buttonPermaGroup21.Contains(lastMove)) return buttonGroup21;
+            if (buttonPermaGroup22.Contains(lastMove)) return buttonGroup22;
+            if (buttonPermaGroup23.Contains(lastMove)) return buttonGroup23;
+            if (buttonPermaGroup31.Contains(lastMove)) return buttonGroup31;
+            if (buttonPermaGroup32.Contains(lastMove)) return buttonGroup32;
+            if (buttonPermaGroup33.Contains(lastMove)) return buttonGroup33;
 
-            return null; 
+            return null;
         }
 
         private void RestartGAME(object sender, EventArgs e)
