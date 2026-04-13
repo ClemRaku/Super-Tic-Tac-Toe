@@ -3,7 +3,11 @@
     "allow": [
       "Bash(dotnet *)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git checkout *)",
+      "Bash(git merge *)",
+      "Bash(git stash)"
     ]
   },
   "$version": 3
