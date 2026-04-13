@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Supertictactoe Trial 1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f31749b68632fc33250cd703abd36c61231028a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+816baef85d80f4e80435020757ad939b11cbee2e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Supertictactoe Trial 1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Supertictactoe Trial 1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
