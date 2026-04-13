@@ -106,7 +106,39 @@ namespace Supertictactoe_Trial_1
 
         public void Tutorial_Text_Box()
         {
-            MessageBox.Show("Super Tic-Tac-Toe is an advanced version of the classic Tic-Tac-Toe game played on a 9x9 grid. \nThe grid is divided into 9 smaller 3x3 sub-grids, making a total of 81 spaces. \nPlayers take turns placing their mark (either X or O) on the board, and the goal is to win by getting three marks in a row in any of the sub-grids, just like in regular Tic-Tac-Toe.\nEach player must follow a special rule about where they can place their mark. On the first turn, Player 1 can place their mark anywhere on the board. \nAfter that, the location of each player’s move determines where the next player must play. \nFor example, if Player 1 places their mark in the top-right corner of a sub-grid, Player 2 must place their mark in the top-right sub-grid of the main board. This rule forces players to think ahead about their moves and their opponent’s possible moves.\r\n\r\nTo win a sub-grid, a player must get three marks in a row, just like in regular Tic-Tac-Toe. Once a player wins a sub-grid, it is considered controlled by that player, and no more marks can be placed there. \nThe overall goal of the game is to win three sub-grids in a row on the main 9x9 board, either horizontally, vertically, or diagonally.\nIf a player is directed to a sub-grid that is already full or has been won, they can place their mark in any open space in the corresponding sub-grid. \nThe game ends when a player wins three sub-grids in a row, and that player is declared the winner. The complexity of Super Tic-Tac-Toe comes from the need to manage both individual sub-grids and the larger 9x9 grid, requiring strategic planning and foresight.", "RULES of the SUPER TIC-TAC-TOE");
+            string rules =
+                "=== WELCOME TO SUPER TIC-TAC-TOE! ===\n\n" +
+                "==================================================\n\n" +
+                "> THE BASICS:\n\n" +
+                "  * The game is played on a 9x9 grid (81 spaces total)\n" +
+                "  * The board is divided into 9 smaller 3x3 sub-grids\n" +
+                "  * You are X [BLUE], and the CPU is O [RED]\n\n" +
+                "==================================================\n\n" +
+                "> HOW TO WIN:\n\n" +
+                "  1. Win a sub-grid by getting 3 in a row\n" +
+                "     (just like classic Tic-Tac-Toe)\n" +
+                "     >> Won sub-grids turn BLUE (for X) or RED (for O)\n\n" +
+                "  2. Win the GAME by controlling 3 sub-grids in a row\n" +
+                "     on the big board (horizontally, vertically, or diagonally)\n\n" +
+                "==================================================\n\n" +
+                "> THE DIRECTIONAL RULE:\n\n" +
+                "  * FIRST MOVE: You can place X anywhere on the board\n\n" +
+                "  * AFTER THAT: Where you place your mark determines\n" +
+                "    where the CPU must play next!\n\n" +
+                "    Example: If you place X in the top-right corner of a\n" +
+                "    sub-grid, the CPU must play in the top-right sub-grid\n" +
+                "    of the big board\n\n" +
+                "  * FREE MOVE: If sent to a sub-grid that is already full\n" +
+                "    or won, you can place your mark ANYWHERE on the board\n\n" +
+                "==================================================\n\n" +
+                "> STRATEGY TIPS:\n\n" +
+                "  * Think ahead! Your move controls where your opponent plays\n" +
+                "  * Balance winning sub-grids with blocking your opponent\n" +
+                "  * Managing both small grids AND the big board is the key!\n\n" +
+                "==================================================\n\n" +
+                "Ready? Let's play!";
+
+            MessageBox.Show(rules, "RULES OF SUPER TIC-TAC-TOE");
         }
         public void RestartGame()
         {
@@ -168,7 +200,7 @@ namespace Supertictactoe_Trial_1
                 highlighted11 = true;
                 buttonGroup11.Clear();
             }
-            else if (!highlighted12 &&
+            else if (!highlighted12 && (
                 button10.Text == "X" && button11.Text == "X" && button13.Text == "X" ||
                 button12.Text == "X" && button15.Text == "X" && button16.Text == "X" ||
                 button14.Text == "X" && button17.Text == "X" && button18.Text == "X" ||
@@ -176,7 +208,7 @@ namespace Supertictactoe_Trial_1
                 button11.Text == "X" && button15.Text == "X" && button17.Text == "X" ||
                 button13.Text == "X" && button16.Text == "X" && button18.Text == "X" ||
                 button10.Text == "X" && button15.Text == "X" && button18.Text == "X" ||
-                button13.Text == "X" && button15.Text == "X" && button14.Text == "X")
+                button13.Text == "X" && button15.Text == "X" && button14.Text == "X"))
             {
                 foreach (Button x in buttonPermaGroup12)
                 {
@@ -216,8 +248,7 @@ namespace Supertictactoe_Trial_1
                 button29.Text == "X" && button43.Text == "X" && button49.Text == "X" ||
                 button34.Text == "X" && button46.Text == "X" && button52.Text == "X" ||
                 button28.Text == "X" && button43.Text == "X" && button52.Text == "X" ||
-                button34.Text == "X" && button43.Text == "X" && button40.Text == "X")
-                )
+                button34.Text == "X" && button43.Text == "X" && button40.Text == "X"))
             {
                 foreach (Button x in buttonPermaGroup21)
                 {
@@ -236,8 +267,7 @@ namespace Supertictactoe_Trial_1
                 button33.Text == "X" && button44.Text == "X" && button50.Text == "X" ||
                 button37.Text == "X" && button47.Text == "X" && button53.Text == "X" ||
                 button30.Text == "X" && button44.Text == "X" && button53.Text == "X" ||
-                button37.Text == "X" && button44.Text == "X" && button41.Text == "X")
-                )
+                button37.Text == "X" && button44.Text == "X" && button41.Text == "X"))
             {
                 foreach (Button x in buttonPermaGroup22)
                 {
@@ -248,8 +278,7 @@ namespace Supertictactoe_Trial_1
                 highlighted22 = true;
                 buttonGroup22.Clear();
             }
-            else if (
-                !highlighted23 && (
+            else if (!highlighted23 && (
                 button32.Text == "X" && button35.Text == "X" && button39.Text == "X" ||
                 button38.Text == "X" && button45.Text == "X" && button48.Text == "X" ||
                 button42.Text == "X" && button51.Text == "X" && button54.Text == "X" ||
@@ -257,8 +286,7 @@ namespace Supertictactoe_Trial_1
                 button35.Text == "X" && button45.Text == "X" && button51.Text == "X" ||
                 button39.Text == "X" && button48.Text == "X" && button54.Text == "X" ||
                 button32.Text == "X" && button45.Text == "X" && button54.Text == "X" ||
-                button39.Text == "X" && button45.Text == "X" && button42.Text == "X"
-                ))
+                button39.Text == "X" && button45.Text == "X" && button42.Text == "X"))
             {
                 foreach (Button x in buttonPermaGroup23)
                 {
@@ -277,8 +305,7 @@ namespace Supertictactoe_Trial_1
                 button56.Text == "X" && button70.Text == "X" && button76.Text == "X" ||
                 button61.Text == "X" && button73.Text == "X" && button79.Text == "X" ||
                 button55.Text == "X" && button70.Text == "X" && button79.Text == "X" ||
-                button61.Text == "X" && button70.Text == "X" && button67.Text == "X")
-                )
+                button61.Text == "X" && button70.Text == "X" && button67.Text == "X"))
             {
                 foreach (Button x in buttonPermaGroup31)
                 {
@@ -289,8 +316,7 @@ namespace Supertictactoe_Trial_1
                 highlighted31 = true;
                 buttonGroup31.Clear();
             }
-            else if (
-                !highlighted32 && (
+            else if (!highlighted32 && (
                 button57.Text == "X" && button60.Text == "X" && button64.Text == "X" ||
                 button63.Text == "X" && button71.Text == "X" && button74.Text == "X" ||
                 button68.Text == "X" && button77.Text == "X" && button80.Text == "X" ||
@@ -298,8 +324,7 @@ namespace Supertictactoe_Trial_1
                 button60.Text == "X" && button71.Text == "X" && button77.Text == "X" ||
                 button64.Text == "X" && button74.Text == "X" && button80.Text == "X" ||
                 button57.Text == "X" && button71.Text == "X" && button80.Text == "X" ||
-                button64.Text == "X" && button71.Text == "X" && button68.Text == "X")
-                )
+                button64.Text == "X" && button71.Text == "X" && button68.Text == "X"))
             {
                 foreach (Button x in buttonPermaGroup32)
                 {
@@ -310,8 +335,7 @@ namespace Supertictactoe_Trial_1
                 highlighted32 = true;
                 buttonGroup32.Clear();
             }
-            else if (
-                !highlighted33 && (
+            else if (!highlighted33 && (
                 button59.Text == "X" && button62.Text == "X" && button66.Text == "X" ||
                 button65.Text == "X" && button72.Text == "X" && button75.Text == "X" ||
                 button69.Text == "X" && button78.Text == "X" && button81.Text == "X" ||
@@ -319,8 +343,7 @@ namespace Supertictactoe_Trial_1
                 button62.Text == "X" && button72.Text == "X" && button78.Text == "X" ||
                 button66.Text == "X" && button75.Text == "X" && button81.Text == "X" ||
                 button59.Text == "X" && button72.Text == "X" && button81.Text == "X" ||
-                button66.Text == "X" && button72.Text == "X" && button69.Text == "X")
-                )
+                button66.Text == "X" && button72.Text == "X" && button69.Text == "X"))
             {
                 foreach (Button x in buttonPermaGroup33)
                 {
@@ -341,8 +364,7 @@ namespace Supertictactoe_Trial_1
                 button7.Text == "O" && button8.Text == "O" && button9.Text == "O" ||
                 button1.Text == "O" && button4.Text == "O" && button7.Text == "O" ||
                 button2.Text == "O" && button5.Text == "O" && button8.Text == "O" ||
-                button3.Text == "O" && button6.Text == "O" && button9.Text == "O")
-                )
+                button3.Text == "O" && button6.Text == "O" && button9.Text == "O"))
             {
                 foreach (Button x in buttonPermaGroup11)
                 {
@@ -361,8 +383,7 @@ namespace Supertictactoe_Trial_1
                 button11.Text == "O" && button15.Text == "O" && button17.Text == "O" ||
                 button13.Text == "O" && button16.Text == "O" && button18.Text == "O" ||
                 button10.Text == "O" && button15.Text == "O" && button18.Text == "O" ||
-                button13.Text == "O" && button15.Text == "O" && button14.Text == "O")
-                )
+                button13.Text == "O" && button15.Text == "O" && button14.Text == "O"))
             {
                 foreach (Button x in buttonPermaGroup12)
                 {
@@ -423,8 +444,7 @@ namespace Supertictactoe_Trial_1
                 button33.Text == "O" && button44.Text == "O" && button50.Text == "O" ||
                 button37.Text == "O" && button47.Text == "O" && button53.Text == "O" ||
                 button30.Text == "O" && button44.Text == "O" && button53.Text == "O" ||
-                button37.Text == "O" && button44.Text == "O" && button41.Text == "O")
-                )
+                button37.Text == "O" && button44.Text == "O" && button41.Text == "O"))
             {
                 foreach (Button x in buttonPermaGroup22)
                 {
@@ -436,8 +456,7 @@ namespace Supertictactoe_Trial_1
                 highlighted22 = true;
 
             }
-            if (
-                !highlighted23 && (
+            if (!highlighted23 && (
                 button32.Text == "O" && button35.Text == "O" && button39.Text == "O" ||
                 button38.Text == "O" && button45.Text == "O" && button48.Text == "O" ||
                 button42.Text == "O" && button51.Text == "O" && button54.Text == "O" ||
@@ -445,8 +464,7 @@ namespace Supertictactoe_Trial_1
                 button35.Text == "O" && button45.Text == "O" && button51.Text == "O" ||
                 button39.Text == "O" && button48.Text == "O" && button54.Text == "O" ||
                 button32.Text == "O" && button45.Text == "O" && button54.Text == "O" ||
-                button39.Text == "O" && button45.Text == "O" && button42.Text == "O")
-                )
+                button39.Text == "O" && button45.Text == "O" && button42.Text == "O"))
             {
                 foreach (Button x in buttonPermaGroup23)
                 {
@@ -458,8 +476,7 @@ namespace Supertictactoe_Trial_1
                 highlighted23 = true ;
 
             }
-            if (
-                !highlighted31 && (
+            if (!highlighted31 && (
                 button55.Text == "O" && button56.Text == "O" && button61.Text == "O" ||
                 button58.Text == "O" && button70.Text == "O" && button73.Text == "O" ||
                 button67.Text == "O" && button76.Text == "O" && button79.Text == "O" ||
@@ -467,8 +484,7 @@ namespace Supertictactoe_Trial_1
                 button56.Text == "O" && button70.Text == "O" && button76.Text == "O" ||
                 button61.Text == "O" && button73.Text == "O" && button79.Text == "O" ||
                 button55.Text == "O" && button70.Text == "O" && button79.Text == "O" ||
-                button61.Text == "O" && button70.Text == "O" && button67.Text == "O")
-                )
+                button61.Text == "O" && button70.Text == "O" && button67.Text == "O"))
             {
                 foreach (Button x in buttonPermaGroup31)
                 {
@@ -480,8 +496,7 @@ namespace Supertictactoe_Trial_1
                 buttonGroup31.Clear();
 
             }
-            if (
-                !highlighted32 && (
+            if (!highlighted32 && (
                 button57.Text == "O" && button60.Text == "O" && button64.Text == "O" ||
                 button63.Text == "O" && button71.Text == "O" && button74.Text == "O" ||
                 button68.Text == "O" && button77.Text == "O" && button80.Text == "O" ||
@@ -489,8 +504,7 @@ namespace Supertictactoe_Trial_1
                 button60.Text == "O" && button71.Text == "O" && button77.Text == "O" ||
                 button64.Text == "O" && button74.Text == "O" && button80.Text == "O" ||
                 button57.Text == "O" && button71.Text == "O" && button80.Text == "O" ||
-                button64.Text == "O" && button71.Text == "O" && button68.Text == "O")
-                )
+                button64.Text == "O" && button71.Text == "O" && button68.Text == "O"))
             {
                 foreach (Button x in buttonPermaGroup32)
                 {
@@ -502,8 +516,7 @@ namespace Supertictactoe_Trial_1
                 buttonGroup32.Clear();
 
             }
-            if (
-                !highlighted33 && (
+            if (!highlighted33 && (
                 button59.Text == "O" && button62.Text == "O" && button66.Text == "O" ||
                 button65.Text == "O" && button72.Text == "O" && button75.Text == "O" ||
                 button69.Text == "O" && button78.Text == "O" && button81.Text == "O" ||
@@ -511,8 +524,7 @@ namespace Supertictactoe_Trial_1
                 button62.Text == "O" && button72.Text == "O" && button78.Text == "O" ||
                 button66.Text == "O" && button75.Text == "O" && button81.Text == "O" ||
                 button59.Text == "O" && button72.Text == "O" && button81.Text == "O" ||
-                button66.Text == "O" && button72.Text == "O" && button69.Text == "O"
-                ))
+                button66.Text == "O" && button72.Text == "O" && button69.Text == "O"))
             {
                 foreach (Button x in buttonPermaGroup33)
                 {
